@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+void tekst ()
+{  
+  
+  cout << "Vardas: Mantas Rimkus" << endl;
+  cout << "Pasirinkau programų sistemų studijų programą, nes noriu sieti gyvenimą su kompiuteriais" << endl;
+
+}
+
+int main ()
+{
+   
+  tekst ();
+  tekst ();
+
+  return 0;
+}

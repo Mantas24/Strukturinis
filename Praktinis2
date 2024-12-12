@@ -1,0 +1,114 @@
+#include <iostream>
+using namespace std;
+
+// 1. Funkcija kuri patikrina ar ivesta raidė yra balse
+void raid(char raide) {
+
+    if (raide == 'a' || raide == 'e' || raide == 'i' || raide == 'o' || raide == 'u') {
+        cout << "Raidė " << raide << " yra balsė." << endl;
+    } else {
+        cout << "Raidė " << raide << " nėra balsė." << endl;
+    }
+}
+
+// 2. Funkcija didziausiam bendram dalikliui rasti
+int didBendrDal(int a, int b) {
+    while (b != 0) {
+        int laikinas = b;
+        b = a % b;
+        a = laikinas;
+    }
+    return a;
+}
+
+// 3. Mini zaidimas kuriame vartotojas speja atsitiktini skaiciu
+void zaidimas() {
+    int skaicius = rand() % 100 + 1;
+    int spejimas;
+
+    cout << "Spėkite atsitiktinį skaičių nuo 1 iki 100: ";
+
+    while (true) {
+        cin >> spejimas;
+
+        if (spejimas > skaicius) {
+            cout << "Skaičius per didelis, bandykite dar kartą: ";
+        } else if (spejimas < skaicius) {
+            cout << "Skaičius per mažas, bandykite dar kartą: ";
+        } else {
+            cout << "Atspėjote teisingą skaičių: " << skaicius << endl;
+            break;
+        }
+    }
+}
+
+// 4. FizzBuzz funkcija
+void fizzbuzz(int n) {
+    for (int i = 1; i <= n; i++) {
+        if (i % 3 == 0 && i % 5 == 0) {
+            cout << "FizzBuzz ";
+        } else if (i % 3 == 0) {
+            cout << "Fizz ";
+        } else if (i % 5 == 0) {
+            cout << "Buzz ";
+        } else {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+}
+
+// Programos meniu funkcija
+void menu() {
+    cout << "Pasirinkite veiksmą:" << endl;
+    cout << "1. Patikrinti, ar raidė yra balsė" << endl;
+    cout << "2. Rasti didžiausią bendrą daliklį" << endl;
+    cout << "3. Mini žaidimas: spėkite atsitiktinį skaičių" << endl;
+    cout << "4. FizzBuzz funkcija" << endl;
+    cout << "5. Išeiti" << endl;
+}
+
+int main() {
+    int pasirinkimas;
+
+    while (true) {
+        menu();
+        cin >> pasirinkimas;
+
+        if (pasirinkimas == 1) {
+            char raide;
+            cout << "Įveskite raidę: ";
+            cin >> raide;
+            raid(raide); 
+
+        } else if (pasirinkimas == 2){
+            int sk1, sk2;
+            cout << "Įveskite pirmą skaičių: ";
+            cin >> sk1;
+            cout << "Įveskite antrą skaičių: ";
+            cin >> sk2;
+            int dBD = didBendrDal(sk1, sk2);
+            cout << "Didžiausias bendras daliklis: " << dBD << endl;
+
+        } else if (pasirinkimas == 3) {
+            zaidimas();
+
+        } else if (pasirinkimas == 4) {
+            int n;
+            cout << "Įveskite teigiamą skaičių: ";
+            cin >> n;
+            fizzbuzz(n);
+
+        } else if (pasirinkimas == 5) {
+            cout << "Programa sustabdyta." << endl;
+            break;
+
+        } else {
+            cout << "Neteisingas pasirinkimas, bandykite dar kartą." << endl;
+        }
+
+        cout << endl;
+    }
+
+    return 0;
+}

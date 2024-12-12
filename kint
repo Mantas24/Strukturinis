@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main ()
+
+{
+
+  // ivedu informacija
+ string komandosPavadinimas = "Kauno Žalgiris";
+ int ikurimoMetai = 1944;
+ string savininkas = "Paulius Jankūnas";
+ string arena = "Kauno Žalgirio arena";
+ int  vietuSkaicius = ~15000; 
+
+   //isvedu informacija
+
+ cout << "Komandos informacija: " << endl;
+ cout << "Komandos pavadinimas: " << komandosPavadinimas << endl;
+ cout << "Įkūrimo metai: " << ikurimoMetai << endl; 
+ cout << "Komandos savininkas: " << savininkas << endl;
+ cout << "Vietų skaičius: " << vietuSkaicius << endl;
+
+return 0;
+
+}

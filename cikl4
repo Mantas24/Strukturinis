@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+int main ()
+{
+    // ivedu kintamaji
+    double paz; 
+     
+    cout << "Įveskite pažimį";
+    cin >> paz;
+
+    // patikrinu reiksmes
+
+    if (paz = 10;){
+        cout << "Puiku" << endl;
+    }if else (paz >= 9){
+        cout << "Labai gerai" << endl;
+    }if else (paz >= 7){
+        cout << "Gerai" << endl;
+    }if else (paz >= 5){
+        cout << "Patenkinamai" << endl;
+    }if else (paz < 5){
+        cout << "Egzaminas neišlaikytas" << endl;
+    }     
+  
+  return 0;
+}

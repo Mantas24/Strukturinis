@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+// sukuriame funkcijas
+
+double plius(int a, int b) { 
+    return a + b;            //sudeties funkcija
+}
+double min(int a, int b) {
+    return a - b;            //skirybos funkcija
+}
+double daug(int a, int b) {
+    return a * b;            //daugybos funkcija
+}
+double dal(int a, int b) {
+    if (b == 0){
+        cout << "Klaida!" << endl;
+        return 0;
+        }   
+        return a / b;            //dalybos funkcija
+}
+
+int main ()
+{  
+    //isvedame funkcijas
+    int sk1;
+    int sk2;
+    cout << "Įveskite pirmą skaičių: ";
+    cin >> sk1;
+    cout << "Įveskite antrą skaičių: ";
+    cin >> sk2;
+
+    cout << "Suma: " << plius(sk1, sk2) << endl;
+    cout << "Skirtumas: " << min(sk1, sk2) << endl;
+    cout << "Sandauga: " << daug(sk1, sk2) << endl;
+    cout << "Dalmuo: " << dal(sk1, sk2) << endl;
+
+    return 0;
+}

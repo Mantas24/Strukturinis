@@ -1,0 +1,120 @@
+#include <iostream>
+using namespace std;
+void raid(char raide) {
+
+    raide = tolower(raide);
+    
+    if (raide == 'a' || raide == 'e' || raide == 'i' || raide == 'o' || raide == 'u') {
+        return true;
+    }
+    return false;
+}
+
+// 2. Funkcija didžiausiam bendram dalikliui rasti
+int didziausiasBendrasDaliklis(int a, int b) {
+    while (b != 0) {
+        int laikinas = b;
+        b = a % b;
+        a = laikinas;
+    }
+    return a;
+}
+
+// 3. Mini žaidimas, kuriame vartotojas spėja atsitiktinį skaičių
+void zaidimas() {
+    srand(time(0)); 
+    int skaicius = rand() % 100 + 1;
+    int spejimas;
+    
+    cout << "Spėkite atsitiktinį skaičių nuo 1 iki 100: ";
+    
+    while (true) {
+        cin >> spejimas;
+        
+        if (spejimas > skaicius) {
+            cout << "Skaičius per didelis. Bandykite dar kartą: ";
+        } else if (spejimas < skaicius) {
+            cout << "Skaičius per mažas. Bandykite dar kartą: ";
+        } else {
+            cout << "Sveikiname! Atspėjote teisingą skaičių: " << skaicius << endl;
+            break;
+        }
+    }
+}
+
+// 4. FizzBuzz funkcija
+void fizzbuzz(int n) {
+    for (int i = 1; i <= n; i++) {
+        if (i % 3 == 0 && i % 5 == 0) {
+            cout << "FizzBuzz ";
+        } else if (i % 3 == 0) {
+            cout << "Fizz ";
+        } else if (i % 5 == 0) {
+            cout << "Buzz ";
+        } else {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+}
+
+// Programos meniu funkcija
+void showMenu() {
+    cout << "Pasirinkite veiksmą:\n";
+    cout << "1. Patikrinti, ar raidė yra balsė\n";
+    cout << "2. Rasti didžiausią bendrą daliklį\n";
+    cout << "3. Mini žaidimas: spėkite atsitiktinį skaičių\n";
+    cout << "4. FizzBuzz funkcija\n";
+    cout << "5. Išeiti\n";
+}
+
+int main() {
+    int pasirinkimas;
+
+    while (true) {
+        showMenu();
+        cin >> pasirinkimas;
+
+        if (pasirinkimas == 1) {
+            char raide;
+            cout << "Įveskite raidę: ";
+            cin >> raide;
+            if (arBalse(raide)) {
+                cout << raide << " yra balsė." << endl;
+            } else {
+                cout << raide << " nėra balsė." << endl;
+            }
+
+        } else if (pasirinkimas == 2) {
+            int skaicius1, skaicius2;
+            cout << "Įveskite du skaičius: ";
+            cin >> skaicius1 >> skaicius2;
+            int dBD = didziausiasBendrasDaliklis(skaicius1, skaicius2);
+            cout << "Didžiausias bendras daliklis: " << dBD << endl;
+
+        } else if (pasirinkimas == 3) {
+            // 3. Mini žaidimas: spėkite atsitiktinį skaičių
+            zaidimas();
+
+        } else if (pasirinkimas == 4) {
+            // 4. FizzBuzz funkcija
+            int n;
+            cout << "Įveskite teigiamą skaičių: ";
+            cin >> n;
+            fizzbuzz(n);
+
+        } else if (pasirinkimas == 5) {
+            // 5. Išeiti
+            cout << "Programa sustabdyta." << endl;
+            break;
+
+        } else {
+            // Netinkamas pasirinkimas
+            cout << "Neteisingas pasirinkimas, bandykite dar kartą." << endl;
+        }
+
+        cout << endl;
+    }
+
+    return 0;
+}

@@ -1,0 +1,18 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main ()
+{
+    // įvedu kintamuosius
+
+    int pazimys1= 3;
+    int pazimys2= 5;
+    int pazimys3= 2;
+    int vidurkis;
+      
+    // isvedu kintamuju vidurki
+
+    vidurkis= (pazimys1+pazimys2+pazimys3)/3;
+    cout << vidurkis << endl;
+    return 0;
+}

@@ -1,0 +1,18 @@
+#include <iostream>
+#include <cmath>  // Naudojama apvalinimui
+using namespace std;
+int main()
+{
+    int sum;
+    for (int i = 1; i <= 20; i++) {
+        if (i % 2){
+            sum += i; 
+        }
+    }
+
+
+    cout << "Visų nelyginių intervalo [1; 20] skaičių suma yra " << sum << endl; 
+
+    return 0;
+
+}

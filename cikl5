@@ -1,0 +1,34 @@
+#include <iostream>
+#include <cmath>  // Naudojama apvalinimui
+using namespace std;
+
+int main() {
+    // Sukuriame kintamąjį pažymiui
+    int paz;
+
+    // Įvedame pažymį
+    cout << "Įveskite pažymį: ";
+    cin >> paz;
+
+    // Naudojame switch operatorių su apvalintu pažymiu
+    switch (paz) {
+        case 10:
+            cout << "Puiku" << endl;
+            break;
+        case 9:
+        case 8:
+            cout << "Labai gerai" << endl;
+            break;
+        case 7:
+        case 6:
+            cout << "Gerai" << endl;
+            break;
+        case 5:
+            cout << "Patenkinamai" << endl;
+            break;
+        default:
+            cout << "Egzaminas neišlaikytas" << endl;
+    }
+
+    return 0;
+}
