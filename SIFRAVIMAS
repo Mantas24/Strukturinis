@@ -1,10 +1,109 @@
 #include <iostream>
-#include <fstream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
-const char ABECELE[26] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'} 
+// Apibreziamas abeceles masyvas
+const char ABECELE[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const int ABECELES_DYDIS = 26;
 
-int main ()
-{
+// Funkcija sifravimui naudojant abecele
+string sifruotiSuAbecele(const string& tekstas, const string& raktas) {
+    string rezultatas;
+    int raktoIlgis = raktas.size();
+
+    for (size_t i = 0; i < tekstas.size(); ++i) {
+        if (isalpha(tekstas[i])) {
+            char bazė = isupper(tekstas[i]) ? 'A' : 'a';
+            rezultatas += (tekstas[i] - bazė + toupper(raktas[i % raktoIlgis]) - 'A') % ABECELES_DYDIS + bazė;
+        } else {
+            rezultatas += tekstas[i];
+        }
+    }
+    return rezultatas;
+}
+
+// Funkcija desifravimui naudojant abecele
+string desifruotiSuAbecele(const string& tekstas, const string& raktas) {
+    string rezultatas;
+    int raktoIlgis = raktas.size();
+
+    for (size_t i = 0; i < tekstas.size(); ++i) {
+        if (isalpha(tekstas[i])) {
+            char bazė = isupper(tekstas[i]) ? 'A' : 'a';
+            rezultatas += (tekstas[i] - bazė - (toupper(raktas[i % raktoIlgis]) - 'A') + ABECELES_DYDIS) % ABECELES_DYDIS + bazė;
+        } else {
+            rezultatas += tekstas[i];
+        }
+    }
+    return rezultatas;
+}
+
+// Funkcija šifravimui naudojant ASCII (tik spausdinami simboliai)
+string sifruotiSuASCII(const string& tekstas, const string& raktas) {
+    string rezultatas;
+    int raktoIlgis = raktas.size();
+
+    for (size_t i = 0; i < tekstas.size(); ++i) {
+        // Užtikriname, kad rezultatas liktų spausdinamų simbolių diapazone
+        rezultatas += char(((tekstas[i] - 32 + (raktas[i % raktoIlgis] - 32)) % 95) + 32);
+    }
+    return rezultatas;
+}
+
+// Funkcija dešifravimui naudojant ASCII (tik spausdinami simboliai)
+string desifruotiSuASCII(const string& tekstas, const string& raktas) {
+    string rezultatas;
+    int raktoIlgis = raktas.size();
+
+    for (size_t i = 0; i < tekstas.size(); ++i) {
+        // Užtikriname, kad rezultatas liktų spausdinamų simbolių diapazone
+        rezultatas += char(((tekstas[i] - 32 - (raktas[i % raktoIlgis] - 32) + 95) % 95) + 32);
+    }
+    return rezultatas;
+}
+
+int main() {
+    int pasirinkimas;
+    string tekstas, raktas;
+
+    cout << "Vigenère šifro programa\n";
+    cout << "1. Šifruoti/Dešifruoti naudojant abėcėlę\n";
+    cout << "2. Šifruoti/Dešifruoti naudojant ASCII\n";
+    cout << "Įveskite pasirinkimą: ";
+    cin >> pasirinkimas;
+    cin.ignore(); // Išvalyti naujos eilutės simbolį
+
+    cout << "Įveskite tekstą: ";
+    getline(cin, tekstas);
+
+    cout << "Įveskite raktą: ";
+    getline(cin, raktas);
+
+    if (pasirinkimas == 1) {
+        cout << "1. Šifruoti\n2. Dešifruoti\n";
+        int veiksmas;
+        cin >> veiksmas;
+
+        if (veiksmas == 1) {
+            cout << "Užšifruotas tekstas: " << sifruotiSuAbecele(tekstas, raktas) << endl;
+        } else {
+            cout << "Iššifruotas tekstas: " << desifruotiSuAbecele(tekstas, raktas) << endl;
+        }
+    } else if (pasirinkimas == 2) {
+        cout << "1. Šifruoti\n2. Dešifruoti\n";
+        int veiksmas;
+        cin >> veiksmas;
+
+        if (veiksmas == 1) {
+            cout << "Užšifruotas tekstas: " << sifruotiSuASCII(tekstas, raktas) << endl;
+        } else {
+            cout << "Iššifruotas tekstas: " << desifruotiSuASCII(tekstas, raktas) << endl;
+        }
+    } else {
+        cout << "Neteisingas pasirinkimas!" << endl;
+    }
+
+    return 0;
 }
