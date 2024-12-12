@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main ()
+{
+// ivedu kintamuosius
+  double paz1; 
+  double paz2;
+  double paz3;
+  double paz4;
+
+  cout << "Įveskite pirmą pažimį: ";
+  cin >> paz1;
+  cout << "Įveskite antrą pažimį: ";
+  cin >> paz2;
+  cout << "Įveskite trečią pažimį: ";
+  cin >> paz3;
+  cout << "Įveskite ketvirtą pažimį: ";
+  cin >> paz4;
+
+// apskaiciuoju vidurki
+  double vidurkis = (paz1+paz2+paz3+paz4)/4;
+  cout << "Studento pažymių vidurkis: " << vidurkis << endl;
+
+// isvedu reiksme
+  if (vidurkis >= 5 ){
+    cout << "Vidurkis teigiamas" << endl;
+  }
+
+  return 0;
+}
